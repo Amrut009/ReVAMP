@@ -1,0 +1,108 @@
+<style>
+.footer {
+    color: black;
+    background: #E8E8E8;
+    position: fixed;
+    top: 90%;
+    text-align:center;
+    width:100%;
+}
+</style>
+
+<style>
+.reveal h1, .reveal h2, .reveal h3 {
+  word-wrap: normal;
+  -moz-hyphens: none;
+}
+</style>
+
+ReVAMP Toolchain Development
+========================================================
+author: Amrut Rajkarne
+date: 27th June 2017
+autosize: true
+
+
+Objectives
+========================================================
+- Thorough Study on ReVAMP Architecture
+
+- Automate the ReVAMP Toolchain
+
+![ReVAMP Toolchain](Work_Flow.png)
+
+- Analysis of Hardness Proof : NP-hard and NP-complete Problems
+
+<div class="footer">Objectives</div>
+
+What is ReVAMP?
+========================================================
+
+- The fast decline of Moores law is paving the way for a new set of emerging technology devices
+
+- ReVAMP is based on ReRAM crossbar array, which exploits parallelism in computing logic operations in same word
+
+- ReVAMP allows for Very Long Instruction Word VLIW-like instruction-set
+
+Reference: Debjyoti Bhattacharjee, Rajeswari Devadoss, and Anupam Chattopadhyay. "ReVAMP: ReRAM based VLIW architecture for in-memory computing." IEEE, 2017.
+
+<div class="footer">ReVAMP</div>
+
+
+ReVAMP Architecture
+========================================================
+
+![ReVAMP Architecture](ReVAMP_Architecture.png)
+
+<div class="footer">ReVAMP Architecture</div>
+
+
+ReVAMP Tool-chain
+========================================================
+![ReVAMP Tool-chain](Work_Flow_final.png)
+
+<div class="footer">ReVAMP Tool-Chain</div>
+
+
+
+ReVAMP Tool-Chain
+========================================================
+Logic Synthesis Tools - ABC, Yosys, Aiger, Cirkit, GraphViz
+
+- Basis of Logic Syntheis - ABC so that our toolchain supports all different formats supported by ABC
+
+- read_verilog module in ABC is not robust. For that Yosys has been integrated in the toolchain to convert verilog to blif
+
+- Similarly to convert aiger to blif aigtoblif tool has been integrated since ABC has issues with the conversion
+
+Reference - https://people.eecs.berkeley.edu/~alanmi/abc/
+
+<div class="footer">Frontend Support (Complete) </div>
+
+ReVAMP Tool-Chain
+========================================================
+Logic Synthesis allows technology independent optimization of the circuits using intermediate data-structures and techniques.
+
+- ABC Synthesis Commands
+  - strash, collapse
+  - dc2 (Gate level Optimization)
+  - if -x -g, balance (Depth Optimization)
+  - mfse -a (Area Optimization)
+
+- Integrated Interactive user shell to perform Logic Synthesis enlisting different possible optimizations
+
+<div class="footer">Logic Synthesis (Complete) </div>
+
+ReVAMP Tool-Chain (Current Work)
+========================================================
+The technology mapping generates instructions for the ReVAMP architecture.
+- Instruction Set Generation
+- Input Set Generation
+
+Behavioural Simulation and Device Level Simulation would allow the user to run a set of instructions, along with a primary input sequence and observe the ReRAM crossbar state
+
+Analysis of NP-hard and NP-complete problems
+
+
+
+<div class="footer">Current & Future Work</div>
