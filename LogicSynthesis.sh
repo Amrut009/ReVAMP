@@ -1,38 +1,49 @@
 #! /bin/sh
 
-# Checking for correct parameters
-echo "Parameters are $1"
+echo "Read $1 using read_blif in ABC"
 
-# Reading blif with ABC Logic Synthesis
-echo "Input file -"
-./abc/abc -c "read_blif $1; print_stats"
+echo ""
 
-# dc2 and if work only with strashed networks
-echo "Input file after strash -"
-./abc/abc -c "read_blif $1; print_stats; strash; print_stats"
+echo "OPTIMIZATION COMMANDS - "
 
-echo "Input file after strash (1st Combination) -"
-./abc/abc -c "read_blif $1; print_stats; strash; print_stats; dc2; print_stats"
+echo ""
 
-echo "Input file after strash (2nd Combination) -"
-./abc/abc -c "read_blif $1; print_stats; strash; print_stats; if -x -g; print_stats"
+echo "strash : dc2 and if works only on strashed network"
 
-echo "Input file after strash (3rd Combination) -"
-./abc/abc -c "read_blif $1; print_stats; strash; print_stats; dc2; if -x -g; dc2; if -x -g; dc2; if -x -g; dc2; if -x -g; dc2; if -x -g; print_stats"
+echo "" 
 
-echo "Input file after strash (4th Combination) -"
-./abc/abc -c "read_blif $1; print_stats; strash; print_stats; dc2; if -x -g; dc2; if -x -g; dc2; if -x -g; dc2; if -x -g; dc2; if -x -g; dc2; if -x -g; dc2; if -x -g; dc2; if -x -g; dc2; if -x -g; dc2; if -x -g; dc2; if -x -g; dc2; if -x -g; dc2; if -x -g; dc2; if -x -g; dc2; if -x -g; dc2; if -x -g; dc2; if -x -g; dc2; if -x -g; dc2; if -x -g; dc2; if -x -g; print_stats"
+echo "collapse : To convert to BDD if required"
 
-echo "Input file after strash (5th Combination) -"
-./abc/abc -c "read_blif $1; print_stats; strash; print_stats; dc2; dc2; print_stats"
+echo "" 
 
-echo "Input file after strash (6th Combination) -"
-./abc/abc -c "read_blif $1; print_stats; strash; print_stats; if -x -g; if -x -g; print_stats"
+echo "dc2 : Gate Level Optimization"
 
-echo "Input file after strash (7th Combination) -"
-./abc/abc -c "read_blif $1; print_stats; strash; print_stats; dc2; dc2; if -x -g; dc2; dc2; if -x -g; dc2; dc2; if -x -g; dc2; dc2; if -x -g; dc2; dc2; if -x -g; print_stats"
+echo "" 
 
-echo "Input file after strash (8th Combination) -"
-./abc/abc -c "read_blif $1; print_stats; strash; print_stats; dc2; dc2; if -x -g; dc2; dc2; if -x -g; dc2; dc2; if -x -g; dc2; dc2; if -x -g; dc2; dc2; if -x -g; print_stats"
+echo "if -x -g : Depth Level Optimization"
 
-# Other commands - balance, rr, collapse and others. Find all combinations
+echo "" 
+
+echo "mfse -a : Area Level Optimization"
+
+echo ""
+
+echo "Multiple combination of optimization commands can be required to get proper desired optimization"
+
+echo ""
+
+echo "print_stats : To see statistics of the given network"
+
+echo ""
+
+echo "show : To see the visual representation of the circuit (Uses GSview and GraphViz)"
+
+echo ""
+
+echo "write_verilog : To write optimized network to verilog file"
+
+read -p "Press ENTER to run ABC . . . . . . . " -n1 -s
+
+echo ""
+
+./abc/abc
