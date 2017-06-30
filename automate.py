@@ -81,3 +81,19 @@ subprocess.Popen(cmd).wait()
 Task-3
 Technology Mapping: The logic synthesis phase allows technology independent optimization of the circuits using various intermediate data-structures and techniques.
 """
+
+filename = "./VerilogFiles/" + filename + "new" +".v"
+with open(filename) as f:
+    content = f.readlines()
+
+# Remove whitespace characters like `\n` at the end of each line
+content = [x.strip() for x in content] 
+
+# Only keep equations in the list
+content = [x for x in content if "=" in x ]
+
+# Technology Mapping for elements in content
+for x in content:
+	if ""
+
+
